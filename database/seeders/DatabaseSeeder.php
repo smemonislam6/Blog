@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Category;
 use App\Models\Post;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\User;
@@ -16,34 +17,25 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory(10)->unverified()
-            ->has(
-                Post::factory()
-                ->sequence(
-                    ['status' => 'published'],
-                    ['status' => 'draft'],
-                )->count(3)
-                ->has(Comment::factory()->count(2)))
+
+
+        Category::factory()
+        ->sequence(
+            ["name" => "Web Design"],
+            ["name" => "HTML"],
+            ["name" => "Freebies"],
+            ["name" => "JavaScript"],
+            ["name" => "CSS"],
+            ["name" => "Tutorials"],
+        )
+        ->count(6)
+        ->create();
+
+        // Create users with posts and comments
+        User::factory(10)
+            ->has(Post::factory(15)
+                ->has(Comment::factory()->count(2))
+            )
             ->create();
-
-
-        // User::factory(10)
-        //     ->hasPosts(3, new Sequence(
-        //         ['status' => 'published'],
-        //         ['status' => 'draft'],
-        //     ))
-        //     ->create();
-
-
-        // User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
-
-        // $this->call([
-        //     UserSeeder::class,
-        //     PostSeeder::class,
-        //     CommentSeeder::class,
-        // ]);
     }
 }
