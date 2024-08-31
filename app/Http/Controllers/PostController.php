@@ -13,7 +13,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::get();
+        $posts = Post::with(['category','user'])->limit(10)->get();
+        return $posts;
         return view("index", compact("posts"));
     }
 

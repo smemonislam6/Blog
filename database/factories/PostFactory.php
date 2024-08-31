@@ -23,6 +23,7 @@ class PostFactory extends Factory
             "category_id" => Category::inRandomOrder()->first()->id,
             "title"=> $this->faker->sentence(),
             "content"=> $this->faker->paragraph(),
+            "image" => fake()->imageUrl(900, 400),
             "status" => $this->faker->randomElement(["published","draft"]),
         ];
     }

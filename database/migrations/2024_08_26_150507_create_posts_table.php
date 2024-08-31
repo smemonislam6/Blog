@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignIdFor(Category::class)->constrained()->cascadeOnDelete();
             $table->string('title');
             $table->text('content');
+            $table->string('image');
             $table->string('status')->default('draft');
             $table->timestamps();
             $table->softDeletes();
