@@ -13,6 +13,13 @@ class CategorySeeder extends Seeder
      */
     public function run(): void
     {
-
+        Category::factory(6)->sequence(
+            ["name" => "Web Design"],
+            ["name" => "HTML"],
+            ["name" => "Freebies"],
+            ["name" => "JavaScript"],
+            ["name" => "CSS"],
+            ["name" => "Tutorials"]
+        )->create();
     }
 }

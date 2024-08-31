@@ -17,29 +17,28 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-
-
-        Category::factory()
-        ->sequence(
-            ["name" => "Web Design"],
-            ["name" => "HTML"],
-            ["name" => "Freebies"],
-            ["name" => "JavaScript"],
-            ["name" => "CSS"],
-            ["name" => "Tutorials"]
-        )
-        ->count(6)
-        ->create();
-
         // Create users with posts and comments
-        User::factory(10)
-            ->has(Post::factory(15)
-                ->sequence(
-                    ["status" => "published"],
-                    ["status" => "draft"]
-                )
-                ->has(Comment::factory()->count(2))
-            )
-            ->create();
+        // User::factory(10)->create();
+
+        // Category::factory(6)->sequence(
+        //     ["name" => "Web Design"],
+        //     ["name" => "HTML"],
+        //     ["name" => "Freebies"],
+        //     ["name" => "JavaScript"],
+        //     ["name" => "CSS"],
+        //     ["name" => "Tutorials"]
+        // )->create();
+
+        // Post::factory(10)->create();
+
+        // Comment::factory(10)->create();
+
+        $this->call([
+            UserSeeder::class,
+            CategorySeeder::class,
+            PostSeeder::class,
+            CommentSeeder::class
+        ]);
+            
     }
 }
