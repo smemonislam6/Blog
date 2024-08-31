@@ -8,11 +8,11 @@
         <title>@yield('title', 'Blog Post - Start Bootstrap Template')</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        @include('layouts.style')
+        @include('partials.common.style')
     </head>
     <body>
         <!-- Responsive navbar-->
-        @include('layouts.header')
+        @include('partials.common.header')
         <!-- Page content-->
         <div class="container mt-5">
             <div class="row">
@@ -21,15 +21,13 @@
                 </div>
                 <!-- Side widgets-->
                 <div class="col-lg-4">
-                    @include('layouts.sidebar')
+                    @include('partials.common.sidebar')
                 </div>
             </div>
         </div>
         <!-- Footer-->
-        <footer class="py-5 bg-dark">
-            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p></div>
-        </footer>
+        @include('partials.common.footer')
 
-        @include('layouts.scripts')
+        @include('partials.common.scripts')
     </body>
 </html>
